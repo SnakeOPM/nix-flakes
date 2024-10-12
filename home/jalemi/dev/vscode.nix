@@ -1,26 +1,35 @@
-{ inputs, pkgs, ... }:
-let
-  inherit (inputs.nix-vscode-extensions.extensions.${pkgs.system}) open-vsx;
-in
 {
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (inputs.nix-vscode-extensions.extensions.${pkgs.system}) open-vsx;
+in {
   home.packages = builtins.attrValues {
-    inherit (pkgs)
+    inherit
+      (pkgs)
       # c/c++
+      
       cmakeCurses
       clang-tools
       gnumake
       # Python
+      
       python3Full
       # Ruby
+      
       ruby
       # Rust
+      
       rustc
       # Golang
+      
       go
       # Java
+      
       temurin-bin-17
-
       # Nix
+      
       nil
       nixfmt-rfc-style
       arduino-language-server
@@ -29,7 +38,6 @@ in
   };
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = true;
     mutableExtensionsDir = true;

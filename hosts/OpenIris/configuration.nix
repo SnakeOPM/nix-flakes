@@ -1,14 +1,14 @@
-{ hostname, path, ... }:
-let
-  importModule =
-    moduleName:
-    let
-      dir = path + "/modules/${hostname}";
-    in
+{
+  hostname,
+  path,
+  ...
+}: let
+  importModule = moduleName: let
+    dir = path + "/modules/${hostname}";
+  in
     import (dir + "/${moduleName}");
   hostModules = moduleDirs: builtins.concatMap importModule moduleDirs;
-in
-{
+in {
   imports =
     [
       ### ----------------ESSENTIAL------------------- ###
@@ -21,6 +21,7 @@ in
       ### ----------------ESSENTIAL------------------- ###
       ### ----------------DESKTOP------------------- ###
       (path + "/modules/shared/desktop/hyprland.nix")
+      (path + "/modules/shared/desktop/gnome.nix")
       (path + "/modules/shared/desktop/fonts.nix")
       (path + "/modules/shared/programs/steam.nix")
       ### ----------------DESKTOP------------------- ###
@@ -60,7 +61,7 @@ in
       LC_TELEPHONE = "ru_RU.UTF-8";
       LC_TIME = "ru_RU.UTF-8";
     };
-    supportedLocales = [ "all" ];
+    supportedLocales = ["all"];
   };
 
   system.stateVersion = "24.05";

@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   services.gnome = {
     sushi.enable = true;
     glib-networking.enable = true;
@@ -51,7 +54,8 @@
     };
   };
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs)
+    inherit
+      (pkgs)
       adw-gtk3
       adwaita-qt
       adwsteamgtk
@@ -71,7 +75,8 @@
       sysprof
       ;
     inherit (pkgs.kdePackages) breeze;
-    inherit (pkgs.libsForQt5)
+    inherit
+      (pkgs.libsForQt5)
       breeze-icons
       breeze-gtk
       breeze-qt5
@@ -85,13 +90,15 @@
       filelight
       lightly
       ;
-    inherit (pkgs.gnome)
+    inherit
+      (pkgs.gnome)
       gnome-boxes
       gnome-tweaks
       gnome-themes-extra
       adwaita-icon-theme
       ;
-    inherit (pkgs.gnomeExtensions)
+    inherit
+      (pkgs.gnomeExtensions)
       clipboard-history
       rounded-corners
       blur-my-shell
@@ -100,21 +107,24 @@
       pop-shell
       arcmenu
       kimpanel
+      tray-icons-reloaded
       ;
     catppuccin-gtk = pkgs.catppuccin-gtk.override {
-      accents = [ "rosewater" ];
+      accents = ["rosewater"];
       size = "compact";
-      tweaks = [ "normal" ];
+      tweaks = ["normal"];
       variant = "mocha";
     };
   };
-  environment.gnome.excludePackages = builtins.attrValues { inherit (pkgs) gnome-console gnome-builder; };
+  environment.gnome.excludePackages = builtins.attrValues {
+    inherit (pkgs) gnome-console gnome-builder;
+  };
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
   };
 
   programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
-  services.dbus.packages = [ pkgs.gcr ];
+  services.dbus.packages = [pkgs.gcr];
   services.gnome.gnome-browser-connector.enable = true;
 
   nixpkgs.overlays = [

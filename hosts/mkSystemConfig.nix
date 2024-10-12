@@ -15,8 +15,7 @@
   flatpaks,
   aagl,
   ...
-}:
-let
+}: let
   homeManager = import ./homeManagerModules.nix {
     inherit lib inputs path;
     inherit nixpkgs darwin;
@@ -44,56 +43,55 @@ let
       add-23_11-packages
     ];
   };
-in
-{
+in {
   mkSystemConfig = {
-    linux =
-      {
-        hostName,
-        system,
-        useHomeManager ? false,
-        useNur ? false,
-        useHyprland ? false,
-        useVscodeServer ? false,
-        useNvidiaVgpu ? false,
-        useFlatpak ? false,
-        useAagl ? false,
-        users ? [ ],
-        modules ? [ ],
-        ...
-      }:
-      let
-        hostname = hostName;
-        defaults = [
-          { config = cfg; }
+    linux = {
+      hostName,
+      system,
+      useHomeManager ? false,
+      useNur ? false,
+      useHyprland ? false,
+      useVscodeServer ? false,
+      useNvidiaVgpu ? false,
+      useFlatpak ? false,
+      useAagl ? false,
+      users ? [],
+      modules ? [],
+      ...
+    }: let
+      hostname = hostName;
+      defaults =
+        [
+          {config = cfg;}
           sops-nix.nixosModules.sops
           agenix.nixosModules.default
           catppuccin.nixosModules.catppuccin
-        ] ++ modules;
-        sharedModules = lib.flatten [
-          (lib.optional useHyprland hyprland.nixosModules.default)
-          (lib.optional useNur nur.nixosModules.nur)
-          (lib.optional useAagl aagl.nixosModules.default)
-          (lib.optionals useFlatpak [
-            flatpaks.nixosModules.default
-            {
-              config.services.flatpak = {
-                enable = lib.mkDefault true;
-                remotes = {
-                  "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-                  "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
-                };
+        ]
+        ++ modules;
+      sharedModules = lib.flatten [
+        (lib.optional useHyprland hyprland.nixosModules.default)
+        (lib.optional useNur nur.nixosModules.nur)
+        (lib.optional useAagl aagl.nixosModules.default)
+        (lib.optionals useFlatpak [
+          flatpaks.nixosModules.default
+          {
+            config.services.flatpak = {
+              enable = lib.mkDefault true;
+              remotes = {
+                "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+                "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
               };
-            }
-          ])
-          (lib.optionals useVscodeServer [
-            vscode-server.nixosModules.default
-            { config.services.vscode-server.enable = lib.mkDefault true; }
-          ])
-          (lib.optionals useHomeManager (homeManagerModules.nixos hostname users system))
-          defaults
-        ];
-      in
+            };
+          }
+        ])
+        (lib.optionals useVscodeServer [
+          vscode-server.nixosModules.default
+          {config.services.vscode-server.enable = lib.mkDefault true;}
+        ])
+        (lib.optionals useHomeManager (homeManagerModules.nixos hostname users system))
+        defaults
+      ];
+    in
       lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -103,27 +101,30 @@ in
             inherit hostName;
           };
         };
-        modules = [ "${path}/hosts/${hostName}/configuration.nix" ] ++ sharedModules;
+        modules =
+          [
+            "${path}/hosts/${hostName}/configuration.nix"
+          ]
+          ++ sharedModules
+          ++ [inputs.zapret.nixosModules.zapret];
       };
 
-    darwin =
-      {
-        hostName,
-        system,
-        useHomeManager ? false,
-        users ? [ ],
-        modules ? [ ],
-        ...
-      }:
-      let
-        hostname = hostName;
-        defaults = [ { config = cfg; } ] ++ modules;
-        sharedModules = lib.flatten [
-          (lib.optional useHomeManager (homeManagerModules.darwin hostname users system))
-          agenix.darwinModules.default
-          defaults
-        ];
-      in
+    darwin = {
+      hostName,
+      system,
+      useHomeManager ? false,
+      users ? [],
+      modules ? [],
+      ...
+    }: let
+      hostname = hostName;
+      defaults = [{config = cfg;}] ++ modules;
+      sharedModules = lib.flatten [
+        (lib.optional useHomeManager (homeManagerModules.darwin hostname users system))
+        agenix.darwinModules.default
+        defaults
+      ];
+    in
       darwin.lib.darwinSystem {
         inherit system;
         specialArgs = {
@@ -134,7 +135,7 @@ in
             inherit hostName;
           };
         };
-        modules = [ "${path}/hosts/darwin/${hostName}/configuration.nix" ] ++ sharedModules;
+        modules = ["${path}/hosts/darwin/${hostName}/configuration.nix"] ++ sharedModules;
       };
   };
 }

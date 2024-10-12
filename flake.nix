@@ -54,6 +54,9 @@
     aagl.url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
     nix-gaming.url = "github:fufexan/nix-gaming/master";
 
+    # Proxy
+    zapret.url = "github:aca/zapret-flake.nix";
+
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     ### --- Overlays and Applications --- ###
 
@@ -73,162 +76,157 @@
     ### --- de-duplication --- ###
   };
 
-  outputs =
-    {
-      self,
-      # Utils
-      flake-parts,
-      flake-utils,
-      devenv,
-      pre-commit-hooks,
-      nixpkgs,
-      darwin,
-      home-manager,
-      catppuccin,
-      hyprland,
-      sops-nix,
-      agenix,
-      flatpaks,
-      nur,
-      aagl,
-      nix-gaming,
-      spicetify-nix,
-      vscode-server,
-      ...
-    }@inputs:
-    let
-      path = ./.;
-    in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.devenv.flakeModule ];
+  outputs = {
+    self,
+    # Utils
+    flake-parts,
+    flake-utils,
+    devenv,
+    pre-commit-hooks,
+    nixpkgs,
+    darwin,
+    home-manager,
+    catppuccin,
+    hyprland,
+    sops-nix,
+    agenix,
+    flatpaks,
+    nur,
+    aagl,
+    nix-gaming,
+    spicetify-nix,
+    vscode-server,
+    zapret,
+    ...
+  } @ inputs: let
+    path = ./.;
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [inputs.devenv.flakeModule];
       systems = [
         "x86_64-linux"
         "aarch64-linux"
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      perSystem =
-        {
-          config,
-          system,
-          pkgs,
-          ...
-        }:
-        {
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          checks = {
-            pre-commit-check = pre-commit-hooks.lib.${system}.run {
-              src = path;
-              ## --- NIX related hooks --- ##
-              # formatter
-              hooks.nixfmt-rfc-style = {
-                enable = true;
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                ];
-                settings.width = 240;
-                package = pkgs.nixfmt-rfc-style;
-              };
-              ## --- NIX related hooks --- ##
-            };
-          };
-          devenv.shells.default = {
-            name = "Flake Environment";
-            languages = {
-              nix.enable = true;
-              shell.enable = true;
-              python = {
-                enable = true;
-                venv = {
-                  enable = true;
-                  requirements = ''
-                    black
-                    isort
-                    mypy
-                    flake8
-                  '';
-                };
-                version = "3.11";
-              };
-            };
-            pre-commit = {
+      perSystem = {
+        config,
+        system,
+        pkgs,
+        ...
+      }: {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        checks = {
+          pre-commit-check = pre-commit-hooks.lib.${system}.run {
+            src = path;
+            ## --- NIX related hooks --- ##
+            # formatter
+            hooks.nixfmt-rfc-style = {
+              enable = true;
               excludes = [
                 ".direnv"
                 ".devenv"
               ];
-              hooks.nixfmt-rfc-style = {
-                enable = true;
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                  "pkgs"
-                ];
-                settings.width = 120;
-                package = pkgs.nixfmt-rfc-style;
-              };
-              hooks.black = {
-                enable = true;
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                ];
-                files = ".py";
-              };
-              hooks.isort = {
-                enable = true;
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                ];
-                files = ".py";
-              };
-              hooks.flake8 = {
-                enable = true;
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                ];
-                args = [ "--max-line-length=120" ];
-                files = ".py";
-              };
-              hooks.shellcheck.enable = true;
+              settings.width = 240;
+              package = pkgs.nixfmt-rfc-style;
             };
-            packages = builtins.attrValues {
-              inherit (pkgs) git pre-commit;
-              inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
+            ## --- NIX related hooks --- ##
+          };
+        };
+        devenv.shells.default = {
+          name = "Flake Environment";
+          languages = {
+            nix.enable = true;
+            shell.enable = true;
+            python = {
+              enable = true;
+              venv = {
+                enable = true;
+                requirements = ''
+                  black
+                  isort
+                  mypy
+                  flake8
+                '';
+              };
+              version = "3.11";
             };
           };
-          formatter = pkgs.nixfmt-rfc-style;
-        };
-      flake =
-        let
-          commonAttrs = {
-            inherit (nixpkgs) lib;
-            inherit (self) output;
-            ### ----------------FLAKE------------------- ###
-            inherit inputs self path;
-            ### ----------------FLAKE------------------- ###
-
-            ### ----------------SYSTEM------------------- ###
-            inherit nixpkgs darwin;
-            ### ----------------SYSTEM------------------- ###
-
-            ### ----------------MODULES & OVERLAYS------------------- ###
-            inherit hyprland;
-            inherit agenix sops-nix;
-            inherit home-manager spicetify-nix nur;
-            inherit vscode-server flatpaks;
-            inherit catppuccin aagl;
-            ### ----------------MODULES & OVERLAYS------------------- ###
+          pre-commit = {
+            excludes = [
+              ".direnv"
+              ".devenv"
+            ];
+            hooks.nixfmt-rfc-style = {
+              enable = true;
+              excludes = [
+                ".direnv"
+                ".devenv"
+                "pkgs"
+              ];
+              settings.width = 120;
+              package = pkgs.nixfmt-rfc-style;
+            };
+            hooks.black = {
+              enable = true;
+              excludes = [
+                ".direnv"
+                ".devenv"
+              ];
+              files = ".py";
+            };
+            hooks.isort = {
+              enable = true;
+              excludes = [
+                ".direnv"
+                ".devenv"
+              ];
+              files = ".py";
+            };
+            hooks.flake8 = {
+              enable = true;
+              excludes = [
+                ".direnv"
+                ".devenv"
+              ];
+              args = ["--max-line-length=120"];
+              files = ".py";
+            };
+            hooks.shellcheck.enable = true;
           };
-        in
-        {
-          nixosConfigurations = import (path + /hosts) commonAttrs;
-          darwinConfigurations = import (path + /hosts/darwin) commonAttrs;
+          packages = builtins.attrValues {
+            inherit (pkgs) git pre-commit;
+            inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
+          };
         };
+        formatter = pkgs.nixfmt-rfc-style;
+      };
+      flake = let
+        commonAttrs = {
+          inherit (nixpkgs) lib;
+          inherit (self) output;
+          ### ----------------FLAKE------------------- ###
+          inherit inputs self path;
+          ### ----------------FLAKE------------------- ###
+
+          ### ----------------SYSTEM------------------- ###
+          inherit nixpkgs darwin;
+          ### ----------------SYSTEM------------------- ###
+
+          ### ----------------MODULES & OVERLAYS------------------- ###
+          inherit hyprland;
+          inherit agenix sops-nix;
+          inherit home-manager spicetify-nix nur;
+          inherit vscode-server flatpaks;
+          inherit catppuccin aagl;
+          ### ----------------MODULES & OVERLAYS------------------- ###
+        };
+      in {
+        nixosConfigurations = import (path + /hosts) commonAttrs;
+        darwinConfigurations = import (path + /hosts/darwin) commonAttrs;
+      };
     };
 }
