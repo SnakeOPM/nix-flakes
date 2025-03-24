@@ -38,9 +38,11 @@
         qbittorrent
 
         autorandr # you should move to a different location
-        telegram-desktop
         monero-gui
+        signal-desktop
         ;
+
+      inherit (pkgs.unstable) ayugram-desktop;
       # dev
       inherit (pkgs) php83 phpunit;
       inherit (pkgs.php83Extensions) xdebug;
