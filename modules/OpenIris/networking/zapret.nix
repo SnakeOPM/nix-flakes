@@ -1,14 +1,16 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 {
   disabledModules = [ "services/networking/zapret.nix" ];
   imports = [
-    "${inputs.master}/nixos/modules/services/networking/zapret.nix"
+    "${inputs.unstable}/nixos/modules/services/networking/zapret.nix"
   ];
   services.zapret = {
-    enable = true;
+    enable = false;
+    package = pkgs.unstable.zapret;
     udpSupport = true;
     udpPorts = [
       "50000:65535"

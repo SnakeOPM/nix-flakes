@@ -47,6 +47,7 @@
       inherit (pkgs) php83 phpunit;
       inherit (pkgs.php83Extensions) xdebug;
       inherit (pkgs.php83Packages) composer;
+      inherit (pkgs.python312Packages) conda;
 
       # Networking/VPN/Proxy
       inherit (pkgs.unstable) zapret nekoray;
