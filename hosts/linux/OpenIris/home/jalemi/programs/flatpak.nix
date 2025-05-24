@@ -16,6 +16,7 @@
     };
     packages = [
       "flathub:app/sh.ppy.osu/x86_64/stable"
+      "flathub:app/org.kde.kritax/x86_64/stable"
     ];
   };
 }

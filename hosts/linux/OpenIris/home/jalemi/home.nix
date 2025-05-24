@@ -34,12 +34,13 @@
         anki
 
         # Graphic
-        krita
         qbittorrent
 
         autorandr # you should move to a different location
         telegram-desktop
         monero-gui
+        signal-desktop
+        hiddify-app
         ;
       # dev
       inherit (pkgs) php83 phpunit;

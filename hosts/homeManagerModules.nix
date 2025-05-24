@@ -45,7 +45,7 @@
                 sops-nix.homeManagerModules.sops
                 catppuccin.homeModules.catppuccin
                 spicetify-nix.homeManagerModules.default
-                nixcord.homeManagerModules.nixcord
+                nixcord.homeModules.nixcord
                 nixvim.homeManagerModules.nixvim
               ];
             };
@@ -76,7 +76,7 @@
                 sops-nix.homeManagerModules.sops
                 catppuccin.homeModules.catppuccin
                 spicetify-nix.homeManagerModules.default
-                nixcord.homeManagerModules.nixcord
+                nixcord.homeModules.nixcord
                 nixvim.homeManagerModules.nixvim
               ];
             };

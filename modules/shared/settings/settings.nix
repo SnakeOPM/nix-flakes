@@ -8,12 +8,12 @@
     fonts = [
       {
         name = "MesloLGL Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };
+        package = pkgs.nerd-fonts.meslo-lg;
       }
     ];
   };
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   services = {
     pipewire = {
       enable = true;

@@ -9,13 +9,15 @@
   ];
   services.zapret = {
     enable = true;
+    package = pkgs.unstable.zapret;
     udpSupport = true;
     udpPorts = [
       "50000:65535"
+      "443"
     ];
     params = [
       "--dpi-desync=fake,disorder"
-      "--dpi-desync-ttl=4"
+      "--dpi-desync-ttl=2"
       "--dpi-desync-any-protocol"
     ];
   };
