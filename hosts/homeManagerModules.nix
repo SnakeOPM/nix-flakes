@@ -43,9 +43,9 @@
                 (path + "/hosts/linux/${hostName}/home/${userName}/home.nix")
                 agenix.homeManagerModules.default
                 sops-nix.homeManagerModules.sops
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
                 spicetify-nix.homeManagerModules.default
-                nixcord.homeManagerModules.nixcord
+                nixcord.homeModules.nixcord
                 nixvim.homeManagerModules.nixvim
               ];
             };
@@ -76,7 +76,7 @@
                 sops-nix.homeManagerModules.sops
                 catppuccin.homeManagerModules.catppuccin
                 spicetify-nix.homeManagerModules.default
-                nixcord.homeManagerModules.nixcord
+                nixcord.homeModules.nixcord
                 nixvim.homeManagerModules.nixvim
               ];
             };

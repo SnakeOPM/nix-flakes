@@ -34,12 +34,12 @@
         anki
 
         # Graphic
-        krita
         qbittorrent
 
         autorandr # you should move to a different location
         monero-gui
         signal-desktop
+        hiddify-app
         ;
 
       inherit (pkgs.unstable) ayugram-desktop;

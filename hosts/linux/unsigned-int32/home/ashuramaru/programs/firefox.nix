@@ -131,7 +131,7 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://duckduckgo.com/favicon.ico";
+            icon = "https://duckduckgo.com/favicon.ico";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
             definedAliases = [ "@ddg" ];
           };
@@ -227,7 +227,7 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://github.com/favicon.ico";
+            icon = "https://github.com/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = [ "@gh" ];
           };
@@ -247,7 +247,7 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://steamdb.info/static/logos/512px.png";
+            icon = "https://steamdb.info/static/logos/512px.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
             definedAliases = [ "@steamdb" ];
           };
@@ -263,7 +263,7 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://www.protondb.com/sites/protondb/images/favicon.ico";
+            icon = "https://www.protondb.com/sites/protondb/images/favicon.ico";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
             definedAliases = [ "@protondb" ];
           };
@@ -279,7 +279,7 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://www.youtube.com/s/desktop/5d5de6d9/img/favicon.ico";
+            icon = "https://www.youtube.com/s/desktop/5d5de6d9/img/favicon.ico";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
             definedAliases = [
               "@yt"
@@ -298,7 +298,7 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://www.youtube.com/s/desktop/5d5de6d9/img/favicon.ico";
+            icon = "https://www.youtube.com/s/desktop/5d5de6d9/img/favicon.ico";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
             definedAliases = [
               "@ytm"

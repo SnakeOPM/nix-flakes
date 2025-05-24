@@ -35,15 +35,17 @@ in
   };
   programs.vscode = {
     enable = true;
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = true;
     mutableExtensionsDir = true;
-    extensions = builtins.attrValues {
-      ## -- Nix Utils -- ##
-      nix-lsp = open-vsx.bbenoist.nix;
-      nix-ide = open-vsx.jnoortheen.nix-ide;
-      direnv = open-vsx.mkhl.direnv;
-      ## -- Nix Utils -- ##
+    profiles.default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = true;
+      extensions = builtins.attrValues {
+        ## -- Nix Utils -- ##
+        nix-lsp = open-vsx.bbenoist.nix;
+        nix-ide = open-vsx.jnoortheen.nix-ide;
+        direnv = open-vsx.mkhl.direnv;
+        ## -- Nix Utils -- ##
+      };
     };
   };
   home.sessionVariables = {
