@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.gnome = {
     sushi.enable = true;
@@ -103,7 +107,6 @@
       blur-my-shell
       dash-to-dock
       appindicator
-      pop-shell
       arcmenu
       gsconnect
       kimpanel
@@ -116,6 +119,14 @@
       tweaks = [ "normal" ];
       variant = "mocha";
     };
+    pop-shell = pkgs.gnomeExtensions.pop-shell.overrideAttrs (prev: {
+      src = pkgs.fetchFromGitHub {
+        owner = "maru-sama";
+        repo = "shell";
+        rev = "00450417c7520b8724f78170f74c3d47ddffa068";
+        hash = "sha256-3zIbfjaJSUbPmUVppoSBWviQWQvykaT1qw9uQvcXmvM=";
+      };
+    });
   };
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
