@@ -13,13 +13,20 @@
     package = pkgs.unstable.zapret;
     udpSupport = true;
     udpPorts = [
-      "50000:65535"
+      "50000:50100"
       "443"
     ];
     params = [
-      "--dpi-desync=fake,disorder"
-      "--dpi-desync-ttl=2"
+      "--filter-udp=50000-50100"
+      "--dpi-desync=fake"
       "--dpi-desync-any-protocol"
+      "--dpi-desync-repeats=6"
+      "--dpi-desync-cutoff=d3"
+      "--new"
+      "--dpi-desync=fake,disorder"
+      "--dpi-desync-repeats=6"
+      "--dpi-desync-cutoff=d3"
+      "--dpi-desync-ttl=2"
     ];
   };
 
