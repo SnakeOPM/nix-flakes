@@ -27,13 +27,13 @@ in
     enable = true;
     discord = {
       enable = true;
-      package = pkgs.discord;
+      package = pkgs.unstable.discord;
       vencord.enable = true;
       openASAR.enable = true;
     };
     vesktop = {
       enable = true;
-      package = pkgs.vesktop;
+      package = pkgs.unstable.vesktop;
     };
     config = {
       autoUpdate = false;
