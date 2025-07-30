@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.flatpaks.homeManagerModules.declarative-flatpak
+    inputs.flatpaks.homeModule
   ];
   services.flatpak = {
     remotes = {

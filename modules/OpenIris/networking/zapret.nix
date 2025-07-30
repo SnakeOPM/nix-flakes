@@ -24,9 +24,8 @@
       "--dpi-desync-cutoff=d3"
       "--new"
       "--filter-tcp=443,80"
-      "--dpi-desync=fake"
-      "--dpi-desync-fooling=badseq"
-      "--dpi-desync-repeats=6"
+      "--dpi-desync=disorder2"
+      "--dpi-desync-split-pos=1"
     ];
   };
 

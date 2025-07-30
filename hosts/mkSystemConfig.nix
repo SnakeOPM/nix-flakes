@@ -22,7 +22,12 @@ let
     inherit lib inputs path;
     inherit nixpkgs darwin nur;
     inherit home-manager agenix sops-nix;
-    inherit catppuccin spicetify-nix nixcord nixvim;
+    inherit
+      catppuccin
+      spicetify-nix
+      nixcord
+      nixvim
+      ;
   };
   inherit (homeManager) homeManagerModules;
   addUnstablePackages = final: _prev: {
@@ -77,7 +82,7 @@ in
             { config.services.vscode-server.enable = lib.mkDefault true; }
           ])
           (lib.optionals useFlatpak [
-            flatpaks.nixosModules.declarative-flatpak
+            flatpaks.nixosModule
             {
               config.services.flatpak = {
                 enable = lib.mkDefault true;

@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   nixpkgs.overlays = [
     (self: super: {
@@ -59,7 +64,12 @@
       protontricks.enable = true;
       remotePlay.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
+      extraCompatPackages = builtins.attrValues {
+        inherit (inputs.unstable.legacyPackages.${config.nixpkgs.hostPlatform.system})
+          proton-ge-bin
+          steamtinkerlaunch
+          ;
+      };
     };
     gamemode = {
       enable = true;
