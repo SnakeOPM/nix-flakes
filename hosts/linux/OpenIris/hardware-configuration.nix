@@ -8,7 +8,6 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot = {
-    kernelPackages = pkgs.unstable.linuxPackages;
     kernelModules = [
       # dkms
       "kvm-intel"
