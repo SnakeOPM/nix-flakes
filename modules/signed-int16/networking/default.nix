@@ -1,4 +1,0 @@
-[
-  ./settings.nix
-  ./mullvad.nix
-]

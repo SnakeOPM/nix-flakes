@@ -24,8 +24,8 @@
       "--dpi-desync-cutoff=d3"
       "--new"
       "--filter-tcp=443,80"
-      "--dpi-desync=disorder2"
-      "--dpi-desync-split-pos=1"
+      "--dpi-desync=multidisorder"
+      "--dpi-desync-split-pos=1,sniext+1,host+1,midsld-2,midsld,midsld+2,endhost-1"
     ];
   };
 

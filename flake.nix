@@ -26,7 +26,7 @@
     ### --- ESSENTIAL system modules --- ###
     agenix.url = "github:ryantm/agenix";
     sops-nix.url = "github:Mic92/sops-nix";
-    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
     ### --- ESSENTIAL system modules --- ###
 
     ### --- Overlays and Applications --- ###
@@ -38,7 +38,7 @@
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
     meanvoid-overlay.url = "github:meanvoid/nixos-overlay";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/master";
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     nixcord.url = "github:KaylorBen/nixcord";
     nixvim.url = "github:nix-community/nixvim";
 

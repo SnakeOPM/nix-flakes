@@ -95,7 +95,6 @@ in
       consoleJanitor = {
         enable = true;
         disableSpotifyLogger = true;
-        disableNoisyLoggers = true;
       };
       noF1.enable = true;
     };

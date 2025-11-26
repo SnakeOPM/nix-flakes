@@ -1,4 +1,0 @@
-[
-  ./flatpak.nix
-  ./packages.nix
-]

@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   programs.git = {
     enable = true;
     userName = "jalemi";
@@ -10,6 +11,7 @@ _: {
     };
     delta = {
       enable = true; # syntax highlighter
+      package = pkgs.delta;
       options = {
         decorations = {
           commit-decoration-style = "bold yellow box ul";

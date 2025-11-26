@@ -5,21 +5,20 @@
   ...
 }:
 {
-  imports =
-    [
-      ### ----------------PROGRAMS------------------- ###
-      ./programs/firefox.nix
-      ./programs/flatpak.nix
-      (path + /home/shared/programs/discord.nix)
-      (path + /home/shared/programs/spotify.nix)
-      ### ----------------PROGRAMS------------------- ###
-    ]
-    ++ lib.flatten [
-      (lib.concatLists [
-        (import (path + /home/jalemi/dev/default.nix))
-        (import (path + /home/jalemi/utils/default.nix))
-      ])
-    ];
+  imports = [
+    ### ----------------PROGRAMS------------------- ###
+    ./programs/firefox.nix
+    ./programs/flatpak.nix
+    (path + /home/shared/programs/discord.nix)
+    (path + /home/shared/programs/spotify.nix)
+    ### ----------------PROGRAMS------------------- ###
+  ]
+  ++ lib.flatten [
+    (lib.concatLists [
+      (import (path + /home/jalemi/dev/default.nix))
+      (import (path + /home/jalemi/utils/default.nix))
+    ])
+  ];
   home = {
     packages = builtins.attrValues {
       inherit (pkgs)
@@ -36,13 +35,13 @@
         # Graphic
         qbittorrent
 
-        autorandr # you should move to a different location
+        autorandr
         monero-gui
         signal-desktop
         hiddify-app
+        ayugram-desktop
         ;
 
-      inherit (pkgs.unstable) ayugram-desktop;
       # dev
       inherit (pkgs) php83 phpunit;
       inherit (pkgs.php83Extensions) xdebug;
@@ -50,7 +49,7 @@
       inherit (pkgs.python312Packages) conda;
 
       # Networking/VPN/Proxy
-      inherit (pkgs.unstable) zapret nekoray;
+      inherit (pkgs.unstable) nekoray;
     };
     stateVersion = "24.05";
   };

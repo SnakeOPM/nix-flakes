@@ -110,7 +110,7 @@
             ];
           };
         };
-        default = "SearXNG";
+        default = "Google";
       };
     };
   };

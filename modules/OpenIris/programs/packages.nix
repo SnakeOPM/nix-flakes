@@ -13,4 +13,8 @@
       rofi-wayland
       ;
   };
+  programs = {
+    droidcam.enable = true;
+  };
+
 }

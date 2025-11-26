@@ -46,7 +46,7 @@
                 catppuccin.homeModules.catppuccin
                 spicetify-nix.homeManagerModules.default
                 nixcord.homeModules.nixcord
-                nixvim.homeManagerModules.nixvim
+                nixvim.homeModules.nixvim
               ];
             };
           }) users

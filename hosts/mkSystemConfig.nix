@@ -73,7 +73,8 @@ in
           sops-nix.nixosModules.sops
           agenix.nixosModules.default
           catppuccin.nixosModules.catppuccin
-        ] ++ modules;
+        ]
+        ++ modules;
         sharedModules = lib.flatten [
           (lib.optionals useHomeManager (homeManagerModules.nixos hostname users system))
           (lib.optional useNur nur.modules.nixos.default)
@@ -82,7 +83,7 @@ in
             { config.services.vscode-server.enable = lib.mkDefault true; }
           ])
           (lib.optionals useFlatpak [
-            flatpaks.nixosModule
+            flatpaks.nixosModules.default
             {
               config.services.flatpak = {
                 enable = lib.mkDefault true;
