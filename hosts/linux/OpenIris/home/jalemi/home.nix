@@ -49,7 +49,7 @@
       inherit (pkgs.python312Packages) conda;
 
       # Networking/VPN/Proxy
-      inherit (pkgs.unstable) nekoray;
+      inherit (pkgs.unstable) throne;
     };
     stateVersion = "24.05";
   };

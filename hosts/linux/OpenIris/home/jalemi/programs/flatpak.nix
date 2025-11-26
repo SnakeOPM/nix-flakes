@@ -9,9 +9,9 @@
     };
     overrides = {
       "sh.ppy.osu" = {
-        filesystems = [
-          "/mnt/bluegum/osu!"
-        ];
+        filesystems = {
+          "/mnt/bluegum/osu!" = "rw";
+        };
       };
     };
     packages = [

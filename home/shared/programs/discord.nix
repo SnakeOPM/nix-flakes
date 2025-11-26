@@ -28,12 +28,9 @@ in
     discord = {
       enable = true;
       package = pkgs.unstable.discord;
-      vencord.enable = true;
+      equicord.enable = true;
+      vencord.enable = false;
       openASAR.enable = true;
-    };
-    vesktop = {
-      enable = true;
-      package = pkgs.unstable.vesktop;
     };
     config = {
       autoUpdate = false;
@@ -66,7 +63,7 @@ in
       messageLinkEmbeds.enable = true;
 
       ### QoL
-      clearURLs.enable = true;
+      clearUrLs.enable = true;
       moreKaomoji.enable = true;
       moreCommands.enable = true;
       forceOwnerCrown.enable = true;
@@ -87,8 +84,8 @@ in
       ### utils
       appleMusicRichPresence = {
         enable = true;
-        activityType = "listening";
-        refreshInterval = 5;
+        activityType = 2;
+        refreshInterval = 5.0;
         enableTimestamps = true;
         enableButtons = true;
       };

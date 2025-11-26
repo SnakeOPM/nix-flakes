@@ -110,7 +110,7 @@
             ];
           };
         };
-        default = "Google";
+        default = "google";
       };
     };
   };
