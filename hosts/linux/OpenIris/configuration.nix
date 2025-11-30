@@ -14,29 +14,28 @@ let
   hostModules = moduleDirs: builtins.concatMap importModule moduleDirs;
 in
 {
-  imports =
-    [
-      ### ----------------ESSENTIAL------------------- ###
-      ./hardware-configuration.nix
-      (path + "/modules/shared/settings/firmware.nix")
-      (path + "/modules/shared/settings/nix.nix")
-      (path + "/modules/shared/settings/nvidia.nix")
-      (path + "/modules/shared/settings/opengl.nix")
-      (path + "/modules/shared/settings/settings.nix")
-      ### ----------------ESSENTIAL------------------- ###
-      ### ----------------DESKTOP------------------- ###
-      (path + "/modules/shared/desktop/gnome.nix")
-      (path + "/modules/shared/desktop/fonts.nix")
-      (path + "/modules/shared/programs/steam.nix")
-      ### ----------------DESKTOP------------------- ###
-    ]
-    ++ hostModules [
-      "environment"
-      "networking"
-      "programs"
-      "virtualisation"
-      "documentation"
-    ];
+  imports = [
+    ### ----------------ESSENTIAL------------------- ###
+    ./hardware-configuration.nix
+    (path + "/modules/shared/settings/firmware.nix")
+    (path + "/modules/shared/settings/nix.nix")
+    (path + "/modules/shared/settings/nvidia.nix")
+    (path + "/modules/shared/settings/opengl.nix")
+    (path + "/modules/shared/settings/settings.nix")
+    ### ----------------ESSENTIAL------------------- ###
+    ### ----------------DESKTOP------------------- ###
+    (path + "/modules/shared/desktop/gnome.nix")
+    (path + "/modules/shared/desktop/fonts.nix")
+    (path + "/modules/shared/programs/steam.nix")
+    ### ----------------DESKTOP------------------- ###
+  ]
+  ++ hostModules [
+    "environment"
+    "networking"
+    "programs"
+    "virtualisation"
+    "documentation"
+  ];
 
   programs = {
     gnupg.dirmngr.enable = true;

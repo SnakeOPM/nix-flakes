@@ -9,7 +9,7 @@
     "${inputs.unstable}/nixos/modules/services/networking/zapret.nix"
   ];
   services.zapret = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.zapret;
     udpSupport = true;
     udpPorts = [
