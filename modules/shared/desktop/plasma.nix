@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-  services.xserver.displayManager.gdm = {
+  services.displayManager.sddm = {
     enable = true;
-    debug = true;
-    autoSuspend = true;
+    wayland.enable = true;
   };
   services.libinput = {
     enable = true;
@@ -24,5 +23,28 @@
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
   };
-  environment.systemPackages = builtins.attrValues { inherit (pkgs.kdePackages) kclock merkuro; };
+  programs.kdeconnect.enable = true;
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs.kdePackages)
+      merkuro
+      discover
+      kcalc
+      kcharselect
+      kclock
+      kcolorchooser
+      kolourpaint
+      ksystemlog
+      sddm-kcm
+      isoimagewriter
+      partitionmanager
+      ;
+    inherit (pkgs)
+      kdiff3
+      catppuccin-kde
+      # Non-KDE graphical packages
+      hardinfo2
+      vlc
+      wayland-utils # Wayland utilities
+      ;
+  };
 }

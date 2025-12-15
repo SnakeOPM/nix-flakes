@@ -2,6 +2,7 @@
 {
   networking = {
     networkmanager.enable = true;
+    hostName = hostname;
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -29,5 +30,8 @@
         port = 57255;
       }
     ];
+
   };
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
 }
