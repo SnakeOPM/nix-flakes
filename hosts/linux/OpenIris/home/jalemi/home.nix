@@ -38,9 +38,10 @@
         autorandr
         monero-gui
         signal-desktop
-        hiddify-app
         ayugram-desktop
         ;
+
+      inherit (pkgs.nixpkgs-25_05) hiddify-app nekoray;
 
       # dev
       inherit (pkgs) php83 phpunit;

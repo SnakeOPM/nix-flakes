@@ -10,7 +10,7 @@ let
     let
       version = "latest";
     in
-    inputs.firefox-addons.lib.${pkgs.system}.buildFirefoxXpiAddon {
+    inputs.firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}.buildFirefoxXpiAddon {
       pname = "bypass-paywalls-clean";
       inherit version;
       addonId = "magnolia@12.34";
@@ -42,7 +42,7 @@ in
         '';
       };
       extensions = builtins.attrValues {
-        inherit (inputs.firefox-addons.packages.${pkgs.system})
+        inherit (inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system})
           # necessity
           ublock-origin
           # privacy-badger

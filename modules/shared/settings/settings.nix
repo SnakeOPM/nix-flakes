@@ -51,7 +51,7 @@
       mpd
 
       # Networking
-      finger_bsd
+      bsd-finger
       curl
       wget
       nmap

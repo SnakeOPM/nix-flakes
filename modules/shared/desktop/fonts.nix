@@ -2,11 +2,10 @@
   config,
   pkgs,
   lib,
-  system,
   ...
 }:
 let
-  isLinux = builtins.elem system [
+  isLinux = builtins.elem pkgs.stdenv.hostPlatform.system [
     "x86_64-linux"
     "aarch64-linux"
   ];
@@ -30,12 +29,12 @@ in
           noto-fonts
           noto-fonts-cjk-sans
           noto-fonts-cjk-serif
-          noto-fonts-emoji
+          noto-fonts-color-emoji
           agave
           anonymousPro
           liberation_ttf
           terminus_font
-          ubuntu_font_family
+          ubuntu-classic
           roboto
           roboto-mono
           powerline-symbols

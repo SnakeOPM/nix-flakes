@@ -13,12 +13,13 @@
     ### --- System --- ###
     ### --- nixpkgs channels --- ###
     master.url = "github:nixos/nixpkgs/master"; # Only for debug purposes e.g. nix run
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
-    nixpkgs-24_05.url = "github:nixos/nixpkgs/nixos-24.05-small"; # for backwards compatibility with some older versions
+    nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05-small"; # for backwards compatibility with some older versions
+
     ### --- nixpkgs channels --- ###
     darwin.url = "github:lnl7/nix-darwin/master";
-    home-manager.url = "github:nix-community/home-manager/release-25.05"; # for now
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     hm_unstable.url = "github:nix-community/home-manager/master";
     nur.url = "github:nix-community/NUR";
     ### --- System --- ###
@@ -38,7 +39,7 @@
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
     meanvoid-overlay.url = "github:meanvoid/nixos-overlay";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/master";
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/main";
     nixcord.url = "github:KaylorBen/nixcord";
     nixvim.url = "github:nix-community/nixvim";
 
@@ -118,7 +119,7 @@
             config.allowUnfree = true;
           };
           checks = {
-            pre-commit-check = pre-commit-hooks.lib.${system}.run {
+            pre-commit-check = pre-commit-hooks.lib.${pkgs.stdenv.hostPlatform.system}.run {
               src = path;
               ## --- NIX related hooks --- ##
               # formatter

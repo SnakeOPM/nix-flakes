@@ -5,19 +5,18 @@
   ...
 }:
 {
-  imports =
-    [
-      ### ----------------PROGRAMS------------------- ###
-      (./programs/firefox.nix)
-      (path + /home/shared/programs/discord.nix)
-      ### ----------------PROGRAMS------------------- ###
-    ]
-    ++ lib.flatten [
-      (lib.concatLists [
-        (import (path + /home/ashuramaru/dev/default.nix))
-        (import (path + /home/ashuramaru/cli/default.nix))
-      ])
-    ];
+  imports = [
+    ### ----------------PROGRAMS------------------- ###
+    (./programs/firefox.nix)
+    (path + /home/shared/programs/discord.nix)
+    ### ----------------PROGRAMS------------------- ###
+  ]
+  ++ lib.flatten [
+    (lib.concatLists [
+      (import (path + /home/ashuramaru/dev/default.nix))
+      (import (path + /home/ashuramaru/cli/default.nix))
+    ])
+  ];
   home = {
     packages = builtins.attrValues {
       inherit (pkgs)
@@ -54,7 +53,7 @@
         yubikey-manager # OTP
         yt-dlp # must have
         ani-cli # Anime downloader
-        thefuck # just for lulz
+        pay-respects # just for lulz
         ;
       # Gaming
       inherit (pkgs)

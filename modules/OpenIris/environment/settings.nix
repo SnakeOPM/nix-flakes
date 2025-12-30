@@ -4,6 +4,7 @@
     udev = {
       packages = builtins.attrValues {
         inherit (pkgs) yubikey-personalization gnome-settings-daemon;
+        inherit (pkgs.kdePackages) plasma-workspace;
         inherit (pkgs.gnome2) GConf;
       };
     };

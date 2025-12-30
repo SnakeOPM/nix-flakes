@@ -33,7 +33,12 @@ let
 
     ### ----------------MODULES & OVERLAYS------------------- ###
     inherit catppuccin flatpaks;
-    inherit spicetify-nix nixcord nixvim aagl;
+    inherit
+      spicetify-nix
+      nixcord
+      nixvim
+      aagl
+      ;
     ### ----------------MODULES & OVERLAYS------------------- ###
   };
   inherit (systems) mkSystemConfig;

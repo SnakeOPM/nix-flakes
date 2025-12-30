@@ -2,15 +2,10 @@
 {
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
-      slurp
-      hyprshot
       home-manager
-      thefuck
-      waybar
-      dunst
+      pay-respects
       kitty
       swww
-      rofi-wayland
       ;
   };
   programs = {

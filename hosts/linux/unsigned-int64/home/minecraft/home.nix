@@ -17,7 +17,7 @@
     username = "minecraft";
     packages = builtins.attrValues {
       # Utils
-      inherit (pkgs) thefuck;
+      inherit (pkgs) pay-respects;
     };
     stateVersion = "24.05";
   };

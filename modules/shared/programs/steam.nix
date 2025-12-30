@@ -21,7 +21,6 @@
               libkrb5
               keyutils
               libgdiplus
-              glxinfo
               mesa-demos
               vulkan-tools
               vulkan-headers
@@ -29,7 +28,7 @@
               vulkan-validation-layers
               vulkan-extension-layer
               vulkan-loader
-              vkBasalt
+              vkbasalt
               mangohud
               steamtinkerlaunch
               thcrap-steam-proton-wrapper
@@ -55,7 +54,7 @@
     inherit (pkgs) scummvm inotify-tools;
     inherit (pkgs) winetricks protonplus;
     inherit (pkgs.wineWowPackages) stagingFull;
-    # inherit (inputs.nix-gaming.packages.${pkgs.system}) wine-discord-ipc-bridge;
+    # inherit (inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}) wine-discord-ipc-bridge;
 
   };
   programs = {

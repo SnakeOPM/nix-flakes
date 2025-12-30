@@ -32,13 +32,13 @@ let
   inherit (homeManager) homeManagerModules;
   addUnstablePackages = final: _prev: {
     unstable = import inputs.unstable {
-      inherit (final) system;
+      inherit (final.stdenv.hostPlatform) system;
       config = final.config;
     };
   };
-  add-24_05-packages = final: _prev: {
-    nixpkgs-24_05 = import inputs.nixpkgs-24_05 {
-      inherit (final) system;
+  add-25_05-packages = final: _prev: {
+    nixpkgs-25_05 = import inputs.nixpkgs-25_05 {
+      inherit (final.stdenv.hostPlatform) system;
       config = final.config;
     };
   };
@@ -46,7 +46,7 @@ let
     nixpkgs.config.allowUnfree = true;
     nixpkgs.overlays = [
       addUnstablePackages
-      add-24_05-packages
+      add-25_05-packages
     ];
   };
 in

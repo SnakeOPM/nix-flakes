@@ -43,6 +43,9 @@ in
         "flakes"
       ];
       substituters = [
+        # Shanghai Jiao Tong University - best for Asia
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store" # USTC backup mirror
         "https://devenv.cachix.org" # devenv
         "https://nix-community.cachix.org" # nix-community e.g home-manager
         "https://ezkea.cachix.org" # aagl

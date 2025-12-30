@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 let
-  inherit (inputs.nix-vscode-extensions.extensions.${pkgs.system}) open-vsx;
+  inherit (inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}) open-vsx;
 in
 {
   home.packages = builtins.attrValues {
@@ -10,9 +10,6 @@ in
       cmakeCurses
       clang-tools
       gnumake
-      # Python
-
-      python3Full
       # Ruby
 
       ruby

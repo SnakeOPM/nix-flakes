@@ -12,7 +12,7 @@
       };
       #! dont forget to add extensions
       # extensions = builtins.attrValues {
-      #   inherit (inputs.firefox-addons.packages.${pkgs.system})
+      #   inherit (inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system})
 
       # };
       search = {

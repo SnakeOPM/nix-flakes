@@ -15,7 +15,6 @@ _: {
       plugins = [
         "git"
         "docker"
-        "thefuck"
       ];
       theme = "agnoster";
     };
