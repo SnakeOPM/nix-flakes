@@ -44,6 +44,7 @@
       # Non-KDE graphical packages
       hardinfo2
       vlc
+      ptyxis
       wayland-utils # Wayland utilities
       ;
   };
