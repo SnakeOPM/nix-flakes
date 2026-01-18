@@ -1,4 +1,9 @@
-{ hostname, lib, ... }:
+{
+  hostname,
+  lib,
+  pkgs,
+  ...
+}:
 {
   networking = {
     networkmanager.enable = true;
@@ -32,6 +37,12 @@
     ];
 
   };
+
+  services.cloudflare-warp = {
+    enable = true;
+    package = pkgs.unstable.cloudflare-warp;
+  };
+
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
 }
