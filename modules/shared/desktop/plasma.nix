@@ -37,6 +37,7 @@
       sddm-kcm
       isoimagewriter
       partitionmanager
+      audiocd-kio
       ;
     inherit (pkgs)
       kdiff3
