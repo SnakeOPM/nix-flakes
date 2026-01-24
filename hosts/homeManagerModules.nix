@@ -74,10 +74,10 @@
                 (path + "/hosts/darwin/${hostName}/home/${userName}/home.nix")
                 agenix.homeManagerModules.default
                 sops-nix.homeManagerModules.sops
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
                 spicetify-nix.homeManagerModules.default
                 nixcord.homeModules.nixcord
-                nixvim.homeManagerModules.nixvim
+                nixvim.homeModules.nixvim
               ];
             };
           }) users

@@ -16,6 +16,9 @@
   nixcord,
   nixvim,
   aagl,
+  nix-homebrew,
+  homebrew-core,
+  homebrew-cask,
   ...
 }:
 let
@@ -26,7 +29,14 @@ let
     ### ----------------FLAKE------------------- ###
 
     ### ----------------SYSTEM------------------- ###
-    inherit nixpkgs darwin nur;
+    inherit
+      nixpkgs
+      darwin
+      nur
+      nix-homebrew
+      homebrew-core
+      homebrew-cask
+      ;
     inherit home-manager agenix sops-nix;
     inherit vscode-server;
     ### ----------------SYSTEM------------------- ###
@@ -50,5 +60,32 @@ in
     useHomeManager = true;
     users = [ "ashuramaru" ];
     modules = [ ];
+  };
+  walkshmellow = mkSystemConfig.darwin {
+    hostName = "walkshmellow";
+    system = "aarch64-darwin";
+    useHomeManager = true;
+    users = [ "umplida" ];
+    modules = [
+      nix-homebrew.darwinModules.nix-homebrew
+      {
+        nix-homebrew = {
+          enable = true;
+          enableRosetta = true;
+          user = "umplida";
+          taps = {
+            "homebrew/homebrew-core" = homebrew-core;
+            "homebrew/homebrew-cask" = homebrew-cask;
+          };
+          mutableTaps = false;
+        };
+      }
+      (
+        { config, ... }:
+        {
+          homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+        }
+      )
+    ];
   };
 }

@@ -15,6 +15,9 @@
   nixcord,
   nixvim,
   aagl,
+  nix-homebrew,
+  homebrew-core,
+  homebrew-cask,
   ...
 }:
 let
@@ -140,6 +143,11 @@ in
           inherit inputs system hostname;
           inherit path users;
           inherit darwin nixpkgs;
+          inherit
+            nix-homebrew
+            homebrew-core
+            homebrew-cask
+            ;
           host = {
             inherit hostName;
           };

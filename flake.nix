@@ -18,7 +18,18 @@
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05-small"; # for backwards compatibility with some older versions
 
     ### --- nixpkgs channels --- ###
-    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:Homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:Homebrew/homebrew-cask";
+      flake = false;
+    };
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     hm_unstable.url = "github:nix-community/home-manager/master";
     nur.url = "github:nix-community/NUR";
@@ -37,7 +48,6 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
-    meanvoid-overlay.url = "github:meanvoid/nixos-overlay";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/master";
     catppuccin.url = "github:catppuccin/nix/main";
     nixcord.url = "github:KaylorBen/nixcord";
@@ -64,7 +74,6 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-python.inputs.nixpkgs.follows = "nixpkgs";
 
-    meanvoid-overlay.inputs.nixpkgs.follows = "nixpkgs";
     doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
     doom-emacs.inputs.emacs-overlay.follows = "emacs-overlay";
     aagl.inputs.nixpkgs.follows = "unstable";
@@ -91,6 +100,9 @@
       flatpaks,
       spicetify-nix,
       nixcord,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
       nixvim,
       aagl,
       ...
@@ -225,6 +237,9 @@
               nixcord
               aagl
               nixvim
+              nix-homebrew
+              homebrew-core
+              homebrew-cask
               ;
             ### ----------------MODULES & OVERLAYS------------------- ###
           };
