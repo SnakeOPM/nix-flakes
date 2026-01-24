@@ -170,6 +170,7 @@
               excludes = [
                 ".direnv"
                 ".devenv"
+                ".zsh"
               ];
               hooks.nixfmt-rfc-style = {
                 enable = true;
