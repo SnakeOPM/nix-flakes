@@ -63,7 +63,7 @@ in
       messageLinkEmbeds.enable = true;
 
       ### QoL
-      clearUrLs.enable = true;
+      # clearUrLs.enable = true;
       moreKaomoji.enable = true;
       moreCommands.enable = true;
       forceOwnerCrown.enable = true;

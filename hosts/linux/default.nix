@@ -16,6 +16,10 @@
   nixcord,
   nixvim,
   aagl,
+  nix-homebrew,
+  homebrew-core,
+  homebrew-cask,
+
   ...
 }:
 let
@@ -26,7 +30,14 @@ let
     ### ----------------FLAKE------------------- ###
 
     ### ----------------SYSTEM------------------- ###
-    inherit nixpkgs darwin nur;
+    inherit
+      nixpkgs
+      darwin
+      nur
+      nix-homebrew
+      homebrew-core
+      homebrew-cask
+      ;
     inherit home-manager agenix sops-nix;
     inherit vscode-server;
     ### ----------------SYSTEM------------------- ###
