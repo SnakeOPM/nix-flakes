@@ -5,51 +5,6 @@
   ...
 }:
 {
-  nixpkgs.overlays = [
-    (self: super: {
-      steam = super.steam.override {
-        extraPkgs =
-          super:
-          builtins.attrValues {
-            inherit (super)
-              yad
-              curl
-              imagemagick
-              libpng
-              libpulseaudio
-              libvorbis
-              libkrb5
-              keyutils
-              libgdiplus
-              mesa-demos
-              vulkan-tools
-              vulkan-headers
-              vulkan-caps-viewer
-              vulkan-validation-layers
-              vulkan-extension-layer
-              vulkan-loader
-              vkbasalt
-              mangohud
-              steamtinkerlaunch
-              thcrap-steam-proton-wrapper
-              source-han-sans
-              wqy_zenhei
-              zenity
-              ;
-            inherit (super.xorg)
-              xhost
-              libXcursor
-              libXi
-              libXinerama
-              libXScrnSaver
-              ;
-            inherit (super.stdenv.cc.cc) lib;
-            # inherit (inputs.nix-gaming.packages.${super.system}) wine-discord-ipc-bridge;
-          };
-      };
-    })
-  ];
-
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs) scummvm inotify-tools;
     inherit (pkgs) winetricks protonplus;
@@ -60,6 +15,7 @@
   programs = {
     steam = {
       enable = true;
+      package = pkgs.unstable.steam;
       protontricks.enable = true;
       remotePlay.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;

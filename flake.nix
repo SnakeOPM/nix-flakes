@@ -49,7 +49,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/master";
-    catppuccin.url = "github:catppuccin/nix/main";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
     nixcord.url = "github:KaylorBen/nixcord";
     nixvim.url = "github:nix-community/nixvim";
 

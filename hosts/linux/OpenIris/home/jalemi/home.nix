@@ -27,6 +27,7 @@
 
         # Gaming
         bottles
+        r2modman
 
         # Productivity
         libreoffice-fresh
@@ -38,7 +39,6 @@
         autorandr
         monero-gui
         signal-desktop
-        ayugram-desktop
         ;
 
       inherit (pkgs.nixpkgs-25_05) hiddify-app nekoray;
@@ -50,7 +50,7 @@
       inherit (pkgs.python312Packages) conda;
 
       # Networking/VPN/Proxy
-      inherit (pkgs.unstable) throne;
+      inherit (pkgs.unstable) throne telegram-desktop;
     };
     stateVersion = "24.05";
   };

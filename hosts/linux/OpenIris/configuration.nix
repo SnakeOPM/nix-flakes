@@ -2,6 +2,7 @@
   hostname,
   config,
   path,
+  pkgs,
   ...
 }:
 let
@@ -48,6 +49,12 @@ in
     appimage = {
       enable = true;
       binfmt = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [
+          pkgs.libepoxy
+          pkgs.zstd
+        ];
+      };
     };
   };
 
