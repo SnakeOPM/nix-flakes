@@ -25,7 +25,7 @@ in
       # Nix
 
       nil
-      nixfmt-rfc-style
+      nixfmt
       arduino-language-server
       ;
     inherit (pkgs.llvmPackages) libcxxClang;

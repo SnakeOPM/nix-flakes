@@ -39,16 +39,18 @@
         autorandr
         monero-gui
         signal-desktop
+        texliveFull
+        google-chrome
         ;
 
-      inherit (pkgs.nixpkgs-25_05) hiddify-app nekoray;
-
       # dev
-      inherit (pkgs) php83 phpunit;
+      inherit (pkgs)
+        php83
+        phpunit
+        jupyter
+        ;
       inherit (pkgs.php83Extensions) xdebug;
       inherit (pkgs.php83Packages) composer;
-      inherit (pkgs.python312Packages) conda;
-
       # Networking/VPN/Proxy
       inherit (pkgs.unstable) throne telegram-desktop;
     };

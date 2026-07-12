@@ -49,6 +49,7 @@ in
           source-code-pro
           font-awesome
           recursive
+          corefonts
           ;
       }
       ++ [

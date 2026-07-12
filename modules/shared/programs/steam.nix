@@ -8,7 +8,7 @@
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs) scummvm inotify-tools;
     inherit (pkgs) winetricks protonplus;
-    inherit (pkgs.wineWowPackages) stagingFull;
+    inherit (pkgs.wineWow64Packages) stagingFull;
     # inherit (inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}) wine-discord-ipc-bridge;
 
   };

@@ -16,17 +16,16 @@ let
   hostModules = moduleDirs: builtins.concatMap importModule moduleDirs;
 in
 {
-  imports =
-    [
-      ./system.nix
-      ./brew.nix
-      (path + /modules/shared/settings/nix.nix)
-      (path + /modules/shared/desktop/fonts.nix)
-    ]
-    ++ hostModules [
-      "environment"
-      "networking"
-    ];
+  imports = [
+    ./system.nix
+    ./brew.nix
+    (path + /modules/shared/settings/nix.nix)
+    (path + /modules/shared/desktop/fonts.nix)
+  ]
+  ++ hostModules [
+    "environment"
+    "networking"
+  ];
   security = {
     pam = {
       enableSudoTouchIdAuth = true;
@@ -57,7 +56,7 @@ in
       p7zip
 
       # misc
-      neofetch
+      fastfetch
 
       # Graphics/Video/enc/dec
       ffmpeg-full

@@ -67,7 +67,7 @@
       wl-clipboard-x11
 
       # misc
-      neofetch
+      fastfetch
       hyfetch
       ;
     inherit (pkgs.gst_all_1)

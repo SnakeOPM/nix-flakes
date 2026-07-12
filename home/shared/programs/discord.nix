@@ -64,7 +64,6 @@ in
 
       ### QoL
       # clearUrLs.enable = true;
-      moreKaomoji.enable = true;
       moreCommands.enable = true;
       forceOwnerCrown.enable = true;
       copyEmojiMarkdown.enable = true;

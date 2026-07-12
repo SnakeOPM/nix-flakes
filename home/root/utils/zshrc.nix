@@ -1,4 +1,4 @@
-{ config, ... }:
+{ path, config, ... }:
 {
   programs.starship = {
     enable = true;

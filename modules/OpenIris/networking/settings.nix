@@ -18,6 +18,7 @@
         # HTTPS
         443
         10800
+        57255
       ];
     };
   };
@@ -25,6 +26,10 @@
     enable = true;
     allowSFTP = true;
     openFirewall = true;
+    settings = {
+      PasswordAuthentication = true; # Set to false later if you want to use strictly SSH Keys
+      PermitRootLogin = "no"; # Recommended for security
+    };
     listenAddresses = [
       {
         addr = "0.0.0.0";

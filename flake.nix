@@ -13,12 +13,12 @@
     ### --- System --- ###
     ### --- nixpkgs channels --- ###
     master.url = "github:nixos/nixpkgs/master"; # Only for debug purposes e.g. nix run
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05-small"; # for backwards compatibility with some older versions
 
     ### --- nixpkgs channels --- ###
-    darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     # Optional: Declarative tap management
@@ -30,7 +30,7 @@
       url = "github:Homebrew/homebrew-cask";
       flake = false;
     };
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     hm_unstable.url = "github:nix-community/home-manager/master";
     nur.url = "github:nix-community/NUR";
     ### --- System --- ###
@@ -49,7 +49,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/master";
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
+    catppuccin.url = "github:catppuccin/nix/release-26.05";
     nixcord.url = "github:KaylorBen/nixcord";
     nixvim.url = "github:nix-community/nixvim";
 
@@ -135,14 +135,14 @@
               src = path;
               ## --- NIX related hooks --- ##
               # formatter
-              hooks.nixfmt-rfc-style = {
+              hooks.nixfmt = {
                 enable = true;
                 excludes = [
                   ".direnv"
                   ".devenv"
                 ];
                 settings.width = 120;
-                package = pkgs.nixfmt-rfc-style;
+                package = pkgs.nixfmt;
               };
               ## --- NIX related hooks --- ##
             };
@@ -166,13 +166,13 @@
                 version = "3.11";
               };
             };
-            pre-commit = {
+            git-hooks = {
               excludes = [
                 ".direnv"
                 ".devenv"
                 ".zsh"
               ];
-              hooks.nixfmt-rfc-style = {
+              hooks.nixfmt = {
                 enable = true;
                 excludes = [
                   ".direnv"
@@ -180,7 +180,7 @@
                   "pkgs"
                 ];
                 settings.width = 120;
-                package = pkgs.nixfmt-rfc-style;
+                package = pkgs.nixfmt;
               };
               hooks.black = {
                 enable = true;
@@ -214,7 +214,7 @@
               inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
             };
           };
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
         };
       flake =
         let

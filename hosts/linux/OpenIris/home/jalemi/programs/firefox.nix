@@ -1,8 +1,9 @@
-{ inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-bin;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.default = {
       id = 0;
       name = "main";
